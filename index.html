@@ -116,33 +116,34 @@
 
   <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <script>
-   emailjs.init("MtSS4J6IQlpkTFznj");
+    emailjs.init("MtSS4J6IQlpkTFznj");
 
     document.getElementById('orderForm').addEventListener('submit', function (e) {
       e.preventDefault();
-  
+
       const file = document.getElementById('photo').files[0];
-  
+
       if (!file) {
         alert("Please upload a photo.");
         return;
       }
-  
+
       const reader = new FileReader();
-  
+
       reader.onload = function (event) {
         const base64Image = event.target.result;
-  
-        const formData = {
-  name: document.getElementById('name').value,
-  surname: document.getElementById('surname').value,
-  contact: document.getElementById('contact').value,
-  size: document.getElementById('size').value,
-  boxType: document.getElementById('boxType').value,
-  finishType: document.getElementById('finishType').value
-};
 
-  
+        // Create form data
+        const formData = {
+          name: document.getElementById('name').value,
+          surname: document.getElementById('surname').value,
+          contact: document.getElementById('contact').value,
+          size: document.getElementById('size').value,
+          boxType: document.getElementById('boxType').value,
+          finishType: document.getElementById('finishType').value,
+          photo: base64Image // Include the base64 image
+        };
+
         emailjs.send('service_v8lxrqd', 'template_td7laml', formData)
           .then(function (response) {
             document.getElementById('statusMsg').textContent = "✅ Your order was sent successfully!";
@@ -154,7 +155,7 @@
             document.getElementById('statusMsg').style.color = "#ff4d4d";
           });
       };
-  
+
       reader.readAsDataURL(file);
     });
   </script>  
