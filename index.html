@@ -116,7 +116,7 @@
 
   <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <script>
-    emailjs.init("MtSS4J6IQlpkTFznj");
+    emailjs.init("M2-DrWQgSfsj0_Azx");
 
     document.getElementById('orderForm').addEventListener('submit', function (e) {
       e.preventDefault();
@@ -144,7 +144,7 @@
           photo: base64Image // Include the base64 image
         };
 
-        emailjs.send('v8lxrqd', 'td7laml', formData)
+        emailjs.send('service_75pxabs', 'td7lamltemplate_45x4cqk', formData)
           .then(function (response) {
             document.getElementById('statusMsg').textContent = "✅ Your order was sent successfully!";
             document.getElementById('statusMsg').style.color = "#00ff99";
