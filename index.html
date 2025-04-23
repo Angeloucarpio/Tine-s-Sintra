@@ -124,17 +124,17 @@ document.getElementById('orderForm').addEventListener('submit', function(e) {
     .then(function(response) {
       console.log('Success!', response);
 
-      // Show success message
+
       const statusMsg = document.getElementById('statusMsg');
       statusMsg.textContent = '✅ Your order was sent successfully! Thank you.';
       statusMsg.style.color = 'green';
 
-      // Reset the form
+
       document.getElementById('orderForm').reset();
     }, function(error) {
       console.log('Failed...', error);
 
-      // Show error message
+
       const statusMsg = document.getElementById('statusMsg');
       statusMsg.textContent = '❌ Failed to send your order. Please try again.';
       statusMsg.style.color = 'red';
