@@ -134,14 +134,14 @@
         const base64Image = event.target.result;
   
         const formData = {
-          name: document.getElementById('name').value,
-          surname: document.getElementById('surname').value,
-          contact: document.getElementById('contact').value,
-          size: document.getElementById('size').value,
-          boxType: document.getElementById('boxType').value,
-          finishType: document.getElementById('finishType').value,
-          photo_base64: base64Image,
-        };
+  name: document.getElementById('name').value,
+  surname: document.getElementById('surname').value,
+  contact: document.getElementById('contact').value,
+  size: document.getElementById('size').value,
+  boxType: document.getElementById('boxType').value,
+  finishType: document.getElementById('finishType').value
+};
+
   
         emailjs.send('service_v8lxrqd', 'template_td7laml', formData)
           .then(function (response) {
