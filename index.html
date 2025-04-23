@@ -116,36 +116,47 @@
 
   <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <script>
-    emailjs.init("MtSS4J6IQlpkTFznj");
-
-    document.getElementById('orderForm').addEventListener('submit', function(e) {
+    emailjs.init("MtSS4J6IQlpkTFznj"); // Double check this Public Key!
+  
+    document.getElementById('orderForm').addEventListener('submit', function (e) {
       e.preventDefault();
-
-      const formData = {
-        name: document.getElementById('name').value,
-        surname: document.getElementById('surname').value,
-        contact: document.getElementById('contact').value,
-        size: document.getElementById('size').value,
-        boxType: document.getElementById('boxType').value,
-        finishType: document.getElementById('finishType').value
+  
+      const file = document.getElementById('photo').files[0];
+  
+      if (!file) {
+        alert("Please upload a photo.");
+        return;
+      }
+  
+      const reader = new FileReader();
+  
+      reader.onload = function (event) {
+        const base64Image = event.target.result;
+  
+        const formData = {
+          name: document.getElementById('name').value,
+          surname: document.getElementById('surname').value,
+          contact: document.getElementById('contact').value,
+          size: document.getElementById('size').value,
+          boxType: document.getElementById('boxType').value,
+          finishType: document.getElementById('finishType').value,
+          photo_base64: base64Image,
+        };
+  
+        emailjs.send('service_1jga7fr', 'template_td7laml', formData)
+          .then(function (response) {
+            document.getElementById('statusMsg').textContent = "✅ Your order was sent successfully!";
+            document.getElementById('statusMsg').style.color = "#00ff99";
+            document.getElementById('orderForm').reset();
+          }, function (error) {
+            console.error('EmailJS error:', error);
+            document.getElementById('statusMsg').textContent = "❌ Failed to send your order. Please try again.";
+            document.getElementById('statusMsg').style.color = "#ff4d4d";
+          });
       };
-
-      emailjs.send('service_1jga7fr', 'template_td7laml', formData)
-        .then(function(response) {
-          console.log('Success!', response);
-
-          const statusMsg = document.getElementById('statusMsg');
-          statusMsg.textContent = '✅ Your order was sent successfully! Thank you.';
-          statusMsg.style.color = '#00ff99';
-          document.getElementById('orderForm').reset();
-        }, function(error) {
-          console.log('Failed...', error);
-
-          const statusMsg = document.getElementById('statusMsg');
-          statusMsg.textContent = '❌ Failed to send your order. Please try again.';
-          statusMsg.style.color = '#ff4d4d';
-        });
+  
+      reader.readAsDataURL(file);
     });
-  </script>
+  </script>  
 </body>
 </html>
