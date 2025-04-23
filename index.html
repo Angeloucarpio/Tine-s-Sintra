@@ -144,7 +144,7 @@
           photo: base64Image // Include the base64 image
         };
 
-        emailjs.send('service_75pxabs', 'td7lamltemplate_45x4cqk', formData)
+        emailjs.send('service_75pxabs', 'template_45x4cqk', formData)
           .then(function (response) {
             document.getElementById('statusMsg').textContent = "✅ Your order was sent successfully!";
             document.getElementById('statusMsg').style.color = "#00ff99";
