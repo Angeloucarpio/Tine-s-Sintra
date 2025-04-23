@@ -1,25 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tine's Sintra</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tine's Sintra</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
     <div>
-        <form onsubmit="myFunction">
-         <input type="text" placeholder="name">
-         <input type="text" placeholder="surname">
-         <input type="number" placeholder="Contact Number">
-         <input type="image" placeholder="photo">
-         <input type="number" placeholder="size">
-         <input type="text" placeholder="boxtype or flat-type">
-         <input type="text" placeholder="type Glossy, glitters or matte"> 
-
-           <input type="submit">
-        </form>
-    </div>
+    <form id="orderForm">
+        <input type="text" id="name" placeholder="First Name" required />
+        <input type="text" id="surname" placeholder="Surname" required />
+        <input type="number" id="contact" placeholder="Contact Number" required />
+        <input type="file" id="photo" accept="image/*" required />
+        <input type="number" id="size" placeholder="Size" required />
+        
+        <select id="boxType" required>
+          <option value="" disabled selected>Select Box Type</option>
+          <option value="Box-type">Box-type</option>
+          <option value="Flat-type">Flat-type</option>
+        </select>
+      
+        <select id="finishType" required>
+          <option value="" disabled selected>Select Finish Type</option>
+          <option value="Glossy">Glossy</option>
+          <option value="Glitters">Glitters</option>
+          <option value="Matte">Matte</option>
+        </select>
+      
+        <button type="submit">Submit</button>
+      </form>
+      
+      <p id="statusMsg"></p>      
+  </div>
+  <script src="script.js"></script>
 </body>
-<script src="script.js"></script>
 </html>
